@@ -1,0 +1,122 @@
+.admin {
+  background-color: #f2f2f2;
+  min-height: 100%;
+}
+
+.adminHeader {
+  border-bottom: 1px solid var(--light);
+  background-color: var(--white);
+}
+
+.adminHeader > div {
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.adminHeader__logo > img {
+  width: 150px;
+  object-fit: contain;
+}
+
+.adminNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--light);
+  background-color: var(--white);
+}
+
+.adminNav .link {
+  margin: 0 20px;
+  margin-right: 20px;
+  padding-top: 15px;
+}
+
+.active {
+  border-bottom: 3px solid var(--primary);
+}
+
+.adminCustomers {
+  height: calc(100vh - 90px);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.adminDelivery .table {
+  min-width: 800px;
+}
+
+.adminDelivery__header {
+  display: flex;
+  align-items: center;
+}
+
+.adminDelivery__header > h3 {
+  margin-right: 20px;
+}
+
+.adminCustomers__content {
+  background-color: var(--white);
+  flex: 1;
+  border-radius: 20px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.adminDelivery,
+.adminRider {
+  height: calc(100vh - 90px);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+}
+
+.adminRider__header,
+.adminCustomers__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.adminDelivery__content,
+.adminRider__content {
+  display: grid;
+  grid-template-columns: 1fr 25%;
+  grid-gap: 30px;
+  height: 80%;
+}
+
+.adminRider__content > div,
+.adminCustomers__content,
+.adminDelivery__content > div {
+  background-color: var(--white);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.adminRider__content h4 {
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.admin__add {
+  cursor: pointer;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.active__row {
+  background-color: red;
+}

@@ -1,0 +1,95 @@
+.wallet {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.walletBalance {
+  text-align: right;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+}
+
+.walletBalance__info {
+  text-align: left;
+}
+
+.walletBalance__icon {
+  color: var(--primary);
+  font-size: 30px !important;
+}
+
+.walletBalance__label {
+  font-size: 16px;
+  color: var(--medium);
+}
+
+.walletBalance__amount {
+  font-size: 25px;
+  font-weight: bolder;
+  color: var(--primary);
+}
+
+.transactions {
+  border: 1px solid var(--medium);
+  height: 50%;
+  padding: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.transactions__box {
+  height: 100%;
+  max-height: 500px;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.transactions__box::-webkit-scrollbar {
+  display: none;
+}
+
+.transactions > h3 {
+  border-bottom: 1px solid var(--light);
+  color: #393939;
+}
+
+.transactions__details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--light);
+}
+
+.transaction__date {
+  color: var(--medium);
+}
+
+.transaction__amount {
+  font-weight: 700;
+}
+
+.transaction__status {
+  width: fit-content;
+  color: var(--white) !important;
+  text-transform: capitalize !important;
+}
+
+.success {
+  background-color: chartreuse !important;
+}
+
+.declined {
+  background-color: var(--danger) !important;
+}
