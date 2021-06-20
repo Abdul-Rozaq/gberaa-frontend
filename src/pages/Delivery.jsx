@@ -45,7 +45,7 @@ const Delivery = () => {
                         loading ? (
                             <p>L.O.A.D.I.N.G</p>
                         ) : (
-                            <DeliveryForm deliveryType={parsed.type} data={delivery} />
+                            <DeliveryForm deliveryType={parsed.type} data={delivery?.data} />
                         )
                     }
                 </div>

@@ -57,8 +57,8 @@ const History = () => {
                         loading ? (
                             <p style={{ textAlign: "center" }}>L.O.A.D.I.N.G</p>
                         ) : (
-                            deliveries.length > 0 ? (
-                                deliveries.map(del => <HistoryDetails 
+                            deliveries?.data?.length > 0 ? (
+                                deliveries.data.map(del => <HistoryDetails 
                                     key={del.id} 
                                     data={del} 
                                 />)

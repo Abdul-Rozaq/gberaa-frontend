@@ -9,10 +9,10 @@ import SubmitButton from "../formReuse/SubmitButton";
 import "../../css/auth.css";
 import routes from '../../utils/routes';
 
-const initialValues = { name: "", email: "", password: "", role: "USER", phone: "" }; 
+const initialValues = { lastName: "", email: "", password: "", role: "USER", phone: "" }; 
 
 const validationSchema = Yup.object().shape({
-    name: Yup.string().required().label("Name"),
+    lastName: Yup.string().required().label("Last Name"),
     phone: Yup.string().required().label("Phone number"),
     email: Yup.string().email().required().label("Email"),
     password: Yup.string().required().min(4).label("Password"),
@@ -20,13 +20,13 @@ const validationSchema = Yup.object().shape({
 });
 
 const RegisterForm = () => {
-    const [success, setSuccess] = useState(false);
+    const [success, setSuccess] = useState("");
     const history = useHistory();
 
-    const handleSubmit = async (data) => {
+    const handleSubmit = async (obj) => {
         try {
-            const { status } = await axios.post("api/auth/signup", data);
-            status === 200 && setSuccess(true);
+            const { data } = await axios.post("api/auth/signup", obj);
+            data.status === "Successful" && setSuccess(data?.description);
 
         } catch (error) {
             console.log(error);
@@ -37,15 +37,13 @@ const RegisterForm = () => {
         if (success) {
             Swal.fire(
                 "Registration success",
-                "Please check your mail for verification",
+                success,
                 "success"
             );
             history.replace(routes.LOGIN);
         }
 
-        return () => {
-            
-        }
+        return () => {}
     }, [history, success])
 
     return (
@@ -56,8 +54,8 @@ const RegisterForm = () => {
                 onSubmit={handleSubmit}
             >
                 <AppFormField
-                    name="name"
-                    placeholder="Your name"
+                    name="lastName"
+                    placeholder="Last name"
                 />
 
                 <AppFormField

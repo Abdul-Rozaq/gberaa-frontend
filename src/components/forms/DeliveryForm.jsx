@@ -22,14 +22,15 @@ const validationSchema = Yup.object().shape({
 
 const DeliveryForm = ({ deliveryType, data }) => {
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const history = useHistory();
 
   const onSubmit = async (obj) => {
     try {
-      const { status } = await axios.post("api/v1/deliveries", JSON.stringify(obj));
-      status && history.push(routes.HISTORY);
+      const { data } = await axios.post("api/v1/deliveries", JSON.stringify(obj));
+      data.status === "Successful" && setSuccess(data?.description);
     } catch (error) {
-      setError(error);
+      setError(data?.status);
       console.log(error);
     }
   };
@@ -43,6 +44,17 @@ const DeliveryForm = ({ deliveryType, data }) => {
         });
       }
   },[error])
+
+  useEffect(() => {
+    if (success) {
+        Swal.fire(
+            "Successful",
+            success,
+            "success"
+        );
+        history.replace(routes.HISTORY);
+    }
+}, [history, success])
 
 
   const initialValues = {
@@ -107,12 +119,12 @@ const DeliveryForm = ({ deliveryType, data }) => {
           disabled={data?.receiverName}
         />
 
-        {data?.price && (
+        {data?.delivery?.price && (
             <AppFormField 
               name="price" 
               label="Price" 
-              placeholder={data?.price}
-              disabled={data?.price}
+              placeholder={data?.delivery?.price}
+              disabled={data?.delivery?.price}
             />
         )}
 
@@ -127,10 +139,10 @@ const DeliveryForm = ({ deliveryType, data }) => {
             name="additionalInfo"
             label="Additional information"
             placeholder={data?.additionalInfo}
-            disabled={data.receiverName}
+            disabled={data?.receiverName}
         />
 
-        {data.receiverName ? (null) : (<SubmitButton title="Submit request" />)}
+        {data?.receiverName ? (null) : (<SubmitButton title="Submit request" />)}
     </AppForm>
   );
 };
